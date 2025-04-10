@@ -1,66 +1,57 @@
 <html>
-<head>
-<script src="https://sgudipati-240919-323-demo.my.salesforce.com/canvas/sdk/js/36.0/canvas-all.js"></script>
-</head>
-<body>
-    <script>
-
-        function loginHandler(e) {
-            var uri;
-            if (! Sfdc.canvas.oauth.loggedin()) {
-                uri = Sfdc.canvas.oauth.loginUrl();
-                Sfdc.canvas.oauth.login(
-                    {uri : uri,
-                        params: {
-                            response_type : "token",
-                            grant_type:"password",
-                            client_id : "3MVG9Gm6vbdjgMWTMM3EU2xpj.MfkCtdBIdaqUXNHWJzlcqnOL0qjbvOAOSFvRYuUoQ4zBGIEvQrnytRJEt3E",
-                            client_secret: "36EB59DE9F4423EAE9C003C0AA92B1B2749597896022B4B828AA7A99126BEDB3",
-                            username:"sgudipati@sgudipati-240807-330.demo",
-                            password:"Test@123",
-                             redirect_uri : encodeURIComponent(
-                                "https://login.salesforce.com")
-                        }});
-                           
-            }
-            else {
-                Sfdc.canvas.oauth.logout();
-                login.innerHTML = "Login";
-                Sfdc.canvas.byId("oauth").innerHTML = "";
-            }
-            return false;
-        }
-
-
-
-        // Bootstrap the page after the DOM is ready.
-        Sfdc.canvas(function() {
-            // On Ready...
-            var login    = Sfdc.canvas.byId("login"),
-                loggedIn = Sfdc.canvas.oauth.loggedin(),
-                token = Sfdc.canvas.oauth.token()
-            login.innerHTML = (loggedIn) ? "Logout" : "Login";
-            if (loggedIn) {
-                 // Displaying only part of the OAuth token for better formatting.
-                Sfdc.canvas.byId("oauth").innerHTML = Sfdc.canvas.oauth.token()
-                    .substring(1,40) + "…";
-               
-            }
-
-        
-            
-            login.onclick=loginHandler;
-        });
-    </script>
-    <h1 id="header">Canvas OAuth App</h1>
-    <div>
-        access_token = <span id="oauth"></span>
-    </div>
-    <div>
-        <p id="output"></p>
-    </div>
-    <div>
-        <a id="login" href="#">Login</a><br/>
-    </div>
-</body>
-</html>
+ <head>
+ <script src="https://sgudipati-240919-323-demo.my.salesforce.com/canvas/sdk/js/36.0/canvas-all.js"></script>
+ </head>
+ <body>
+     <script>
+ 
+         function loginHandler(e) {
+             var uri;
+             if (! Sfdc.canvas.oauth.loggedin()) {
+                 uri = Sfdc.canvas.oauth.loginUrl();
+                 Sfdc.canvas.oauth.login(
+                     {uri : uri,
+                         params: {
+                             response_type : "token",
+                             grant_type:"password",
+                             client_id : "3MVG9Gm6vbdjgMWTMM3EU2xpj.MfkCtdBIdaqUXNHWJzlcqnOL0qjbvOAOSFvRYuUoQ4zBGIEvQrnytRJEt3E",
+                             client_secret: "36EB59DE9F4423EAE9C003C0AA92B1B2749597896022B4B828AA7A99126BEDB3",
+                             username:"sgudipati@sgudipati-240807-330.demo",
+                             password:"Test@123",
+                              redirect_uri : encodeURIComponent(
+                                 "https://login.salesforce.com")
+                         }});
+ 
+             }
+             else {
+                 Sfdc.canvas.oauth.logout();
+                 login.innerHTML = "Login";
+                 Sfdc.canvas.byId("oauth").innerHTML = "";
+             }
+             return false;
+         }
+ 
+         // Bootstrap the page after the DOM is ready.
+         Sfdc.canvas(function() {
+             // On Ready...
+             var login    = Sfdc.canvas.byId("login"),
+                 loggedIn = Sfdc.canvas.oauth.loggedin(),
+                 token = Sfdc.canvas.oauth.token()
+             login.innerHTML = (loggedIn) ? "Logout" : "Login";
+             if (loggedIn) {
+                  // Displaying only part of the OAuth token for better formatting.
+                 Sfdc.canvas.byId("oauth").innerHTML = Sfdc.canvas.oauth.token()
+                     .substring(1,40) + "…";
+             }
+             login.onclick=loginHandler;
+         });
+     </script>
+     <h1 id="header">Canvas OAuth App</h1>
+     <div>
+         access_token = <span id="oauth"></span>
+     </div>
+     <div>
+         <a id="login" href="#">Login</a><br/>
+     </div>
+ </body>
+ </html>
