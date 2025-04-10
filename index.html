@@ -52,12 +52,13 @@
                  // Displaying only part of the OAuth token for better formatting.
                 Sfdc.canvas.byId("oauth").innerHTML = Sfdc.canvas.oauth.token()
                     .substring(1,40) + "…";
-            }
-
-            const params = res.response.context.environment.parameters;
+                    const params = res.response.context.environment.parameters;
         console.log("Received from Aura:", params);
 
         document.getElementById("output").innerText = "Record ID: " + params.recordId;
+            }
+
+        
             
             login.onclick=loginHandler;
         });
@@ -65,6 +66,9 @@
     <h1 id="header">Canvas OAuth App</h1>
     <div>
         access_token = <span id="oauth"></span>
+    </div>
+    <div>
+        <p id="output"></p>
     </div>
     <div>
         <a id="login" href="#">Login</a><br/>
