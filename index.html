@@ -31,14 +31,6 @@
             return false;
         }
 
-     /**   Sfdc.canvas.onReady(function() {
-    Sfdc.canvas.client.refreshSignedRequest(function(res) {
-        const params = res.response.context.environment.parameters;
-        console.log("Received from Aura:", params);
-
-        document.getElementById("output").innerText = "Record ID: " + params.recordId;
-    });
-});**/
 
 
         // Bootstrap the page after the DOM is ready.
@@ -52,10 +44,7 @@
                  // Displaying only part of the OAuth token for better formatting.
                 Sfdc.canvas.byId("oauth").innerHTML = Sfdc.canvas.oauth.token()
                     .substring(1,40) + "…";
-                    const params = res.response.context.environment.parameters;
-        console.log("Received from Aura:", params);
-
-        document.getElementById("output").innerText = "Record ID: " + params.recordId;
+               
             }
 
         
