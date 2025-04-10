@@ -19,7 +19,7 @@
                             username:"sgudipati@sgudipati-240807-330.demo",
                             password:"Test@123",
                              redirect_uri : encodeURIComponent(
-                                "https://login.salesforce.com")
+                                "https://sarascanvasapp-e42e1d2d7a93.herokuapp.com/sdk/callback.html")
                         }});
                            
             }
@@ -30,6 +30,16 @@
             }
             return false;
         }
+
+     /**   Sfdc.canvas.onReady(function() {
+    Sfdc.canvas.client.refreshSignedRequest(function(res) {
+        const params = res.response.context.environment.parameters;
+        console.log("Received from Aura:", params);
+
+        document.getElementById("output").innerText = "Record ID: " + params.recordId;
+    });
+});**/
+
 
         // Bootstrap the page after the DOM is ready.
         Sfdc.canvas(function() {
@@ -43,6 +53,12 @@
                 Sfdc.canvas.byId("oauth").innerHTML = Sfdc.canvas.oauth.token()
                     .substring(1,40) + "…";
             }
+
+            const params = res.response.context.environment.parameters;
+        console.log("Received from Aura:", params);
+
+        document.getElementById("output").innerText = "Record ID: " + params.recordId;
+            
             login.onclick=loginHandler;
         });
     </script>
